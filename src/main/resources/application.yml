@@ -1,15 +1,13 @@
 server:
-  port: 8089
+  port: 8088
 
-spring:
-  jpa:
-    generate-ddl: true
 
 spring:
   application:
     name: GmhHack
   jpa:
-    generate-ddl: true
+    show-sql: true
+
 #h2:
 #  console:
 #    enabled: true
