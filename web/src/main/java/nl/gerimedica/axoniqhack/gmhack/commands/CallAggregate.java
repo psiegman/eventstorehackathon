@@ -32,7 +32,7 @@ public class CallAggregate {
     @CommandHandler
     public void on(CallCommand command) {
         log.info("received command {}", command);
-        apply(IncidentReportedEvent.builder().id(command.getUuid()).comment(command.getComment()).geoLocation(GeoLocationService.convert(command.getGeoLocation())).phoneNumber(command.getPhoneNumber()).build());
+        apply(IncidentReportedEvent.builder().id(command.getUuid()).comment(command.getComment()).geoLocation(command.getGeoLocation()).phoneNumber(command.getPhoneNumber()).build());
     }
 
     @EventSourcingHandler

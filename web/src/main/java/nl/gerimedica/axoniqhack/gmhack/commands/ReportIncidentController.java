@@ -3,10 +3,9 @@ package nl.gerimedica.axoniqhack.gmhack.commands;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import nl.gerimedica.axoniqhack.gmhack.domain.Severity;
 import nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation;
+import nl.gerimedica.axoniqhack.gmhack.events.domain.Severity;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,13 +25,8 @@ public class ReportIncidentController {
     @PostMapping("/report-call")
     public ResponseEntity create(@RequestBody Call request) {
         String id = UUID.randomUUID().toString();
-        commandGateway.sendAndWait(CallCommand.builder()
-                .uuid(id)
-                .comment(request.getComment())
-                .geoLocation(request.getCrimeScene())
-                .localDateTime(request.getLocalDateTime())
-                .phoneNumber(request.getPhoneNumber())
-                .build());
+        commandGateway.sendAndWait(CallCommand.builder().uuid(id).comment(request.getComment()).geoLocation(request.getCrimeScene()).localDateTime(request.getLocalDateTime())
+                .phoneNumber(request.getPhoneNumber()).build());
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

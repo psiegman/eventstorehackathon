@@ -3,8 +3,7 @@ import java.time.LocalDateTime;
 
 import lombok.Builder;
 import lombok.Data;
-import nl.gerimedica.axoniqhack.gmhack.domain.GeoLocation;
-import nl.gerimedica.axoniqhack.gmhack.domain.Severity;
+import nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation;
 
 @Data
 @Builder

@@ -35,7 +35,7 @@ public class IncidentAggregate {
     @CommandHandler
     public void on(ReportIncidentCommand command) {
         log.info("received command {}", command);
-        apply(IncidentReportedEvent.builder().id(command.getUuid()).severity(command.getSeverity()).comment(command.getComment()).geoLocation(GeoLocationService.convert(command.getGeoLocation())).phoneNumber(command.getPhoneNumber()).build());
+        apply(IncidentReportedEvent.builder().id(command.getUuid()).severity(command.getSeverity()).comment(command.getComment()).geoLocation(command.getGeoLocation()).phoneNumber(command.getPhoneNumber()).build());
     }
 
     @EventSourcingHandler
