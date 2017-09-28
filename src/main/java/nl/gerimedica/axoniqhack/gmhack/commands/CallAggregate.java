@@ -24,7 +24,6 @@ public class CallAggregate {
     private GeoLocation geoLocation;
     private LocalDateTime localDateTime;
     private String comment;
-    private Severity severity;
 
     public CallAggregate() {
         log.info("creating aggregate instance");
@@ -33,7 +32,7 @@ public class CallAggregate {
     @CommandHandler
     public void on(CallCommand command) {
         log.info("received command {}", command);
-        apply(IncidentReportedEvent.builder().id(command.getUuid()).severity(command.getSeverity()).comment(command.getComment()).geoLocation(command.getGeoLocation()).phoneNumber(command.getPhoneNumber()).build());
+        apply(IncidentReportedEvent.builder().id(command.getUuid()).comment(command.getComment()).geoLocation(command.getGeoLocation()).phoneNumber(command.getPhoneNumber()).build());
     }
 
     @EventSourcingHandler

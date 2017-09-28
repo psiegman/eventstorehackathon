@@ -15,5 +15,5 @@ public class CallCommand {
     private GeoLocation geoLocation;
     private LocalDateTime localDateTime;
     private String comment;
-    private Severity severity;
+
 }

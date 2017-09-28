@@ -18,5 +18,5 @@ public class CallReportedEvent {
     private GeoLocation geoLocation;
     private LocalDateTime localDateTime;
     private String comment;
-    private Severity severity;
+
 }
