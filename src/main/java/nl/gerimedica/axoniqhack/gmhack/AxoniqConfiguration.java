@@ -20,6 +20,8 @@ import java.util.concurrent.Executors;
 
 import io.axoniq.eventstore.client.EventStoreConfiguration;
 import io.axoniq.eventstore.client.axon.AxonIQEventStore;
+import nl.gerimedica.axoniqhack.gmhack.commands.IncidentAggregate;
+import org.axonframework.commandhandling.model.Repository;
 import org.axonframework.common.caching.Cache;
 import org.axonframework.common.caching.WeakReferenceCache;
 import org.axonframework.common.transaction.TransactionManager;
@@ -76,8 +78,8 @@ public class AxoniqConfiguration {
     }
 
     @Bean
-    public Repository<BankAccountAggregate> bankAccountAggregateRepository(EventStore eventStore, SnapshotTriggerDefinition snapshotTriggerDefinition, Cache cache) {
-        return new CachingEventSourcingRepository<>(new GenericAggregateFactory<>(BankAccountAggregate.class), eventStore, cache, snapshotTriggerDefinition);
+    public Repository<IncidentAggregate> bankAccountAggregateRepository(EventStore eventStore, SnapshotTriggerDefinition snapshotTriggerDefinition, Cache cache) {
+        return new CachingEventSourcingRepository<>(new GenericAggregateFactory<>(IncidentAggregate.class), eventStore, cache, snapshotTriggerDefinition);
     }
 
     @Bean

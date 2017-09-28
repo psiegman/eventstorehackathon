@@ -23,14 +23,17 @@ public class ReportIncidentController {
     }
 
     @PostMapping("/report-incident")
-    public ResponseEntity<BankAccountResource> create(@RequestBody Incident request) {
+    public ResponseEntity create(@RequestBody Incident request) {
         String id = UUID.randomUUID().toString();
         commandGateway.sendAndWait(ReportIncidentCommand.builder()
-
+                .comment(request.getComment())
+                .geoLocation(request.getCrimeScene())
+                .localDateTime(request.getLocalDateTime())
+                .phoneNumber(request.getPhoneNumber())
                 .build());
 
-        BankAccountResource bankAccountResource = new BankAccountResource(id);
-        return new ResponseEntity<>(bankAccountResource, HttpStatus.CREATED);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Data
@@ -40,6 +43,7 @@ public class ReportIncidentController {
         final Severity severity;
         final String comment;
         final GeoLocation crimeScene;
+        final String phoneNumber;
     }
 }
 
