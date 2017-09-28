@@ -1,5 +1,4 @@
 package nl.gerimedica.axoniqhack.gmhack.commands;
-
 import java.time.LocalDateTime;
 
 import lombok.Builder;
@@ -9,7 +8,7 @@ import nl.gerimedica.axoniqhack.gmhack.domain.Severity;
 
 @Data
 @Builder
-public class ReportIncidentCommand {
+public class CallCommand {
 
     private String uuid;
     private String phoneNumber;
@@ -17,5 +16,4 @@ public class ReportIncidentCommand {
     private LocalDateTime localDateTime;
     private String comment;
     private Severity severity;
-
 }

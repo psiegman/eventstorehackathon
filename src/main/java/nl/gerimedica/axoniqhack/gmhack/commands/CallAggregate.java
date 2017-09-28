@@ -15,7 +15,7 @@ import org.axonframework.spring.stereotype.Aggregate;
 
 @Aggregate
 @Slf4j
-public class IncidentAggregate {
+public class CallAggregate {
 
     @AggregateIdentifier
     private String id;
@@ -26,13 +26,12 @@ public class IncidentAggregate {
     private String comment;
     private Severity severity;
 
-    // needed otherwise Spring cannot wire: No qualifying bean of type 'com.com.example.command.CreateBankAccountCommand'
-    public IncidentAggregate() {
+    public CallAggregate() {
         log.info("creating aggregate instance");
     }
 
     @CommandHandler
-    public void on(ReportIncidentCommand command) {
+    public void on(CallCommand command) {
         log.info("received command {}", command);
         apply(IncidentReportedEvent.builder().id(command.getUuid()).severity(command.getSeverity()).comment(command.getComment()).geoLocation(command.getGeoLocation()).phoneNumber(command.getPhoneNumber()).build());
     }
@@ -45,6 +44,5 @@ public class IncidentAggregate {
         this.geoLocation = event.getGeoLocation();
         this.localDateTime = event.getLocalDateTime();
         this.phoneNumber = event.getPhoneNumber();
-        this.severity = event.getSeverity();
     }
 }

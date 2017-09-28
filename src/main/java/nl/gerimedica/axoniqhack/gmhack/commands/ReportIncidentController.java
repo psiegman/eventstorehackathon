@@ -22,22 +22,22 @@ public class ReportIncidentController {
         this.commandGateway = commandGateway;
     }
 
-    @PostMapping("/report-incident")
-    public ResponseEntity create(@RequestBody Incident request) {
+    @PostMapping("/report-call")
+    public ResponseEntity create(@RequestBody Call request) {
         String id = UUID.randomUUID().toString();
-        commandGateway.sendAndWait(ReportIncidentCommand.builder()
+        commandGateway.sendAndWait(CallCommand.builder()
+                .uuid(id)
                 .comment(request.getComment())
                 .geoLocation(request.getCrimeScene())
                 .localDateTime(request.getLocalDateTime())
                 .phoneNumber(request.getPhoneNumber())
                 .build());
 
-
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Data
-    public class Incident {
+    public class Call {
         final String reporter;
         final LocalDateTime localDateTime;
         final Severity severity;

@@ -85,7 +85,6 @@ public class AxoniqConfiguration {
     }
 
     @Bean
-    @Primary
     public Serializer serializer() {
         return new JacksonSerializer();
     }
