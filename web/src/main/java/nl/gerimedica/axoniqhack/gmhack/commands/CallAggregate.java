@@ -5,9 +5,8 @@ import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
 import java.time.LocalDateTime;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.gerimedica.axoniqhack.gmhack.domain.GeoLocation;
-import nl.gerimedica.axoniqhack.gmhack.domain.Severity;
 import nl.gerimedica.axoniqhack.gmhack.events.IncidentReportedEvent;
+import nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.commandhandling.model.AggregateIdentifier;
 import org.axonframework.eventsourcing.EventSourcingHandler;
