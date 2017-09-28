@@ -19,7 +19,7 @@ public class Ambulance {
 
 	private String name;
 
-	State state;
+	private State state;
 
-	GeoLocation geoLocation;
+	private GeoLocation geoLocation;
 }

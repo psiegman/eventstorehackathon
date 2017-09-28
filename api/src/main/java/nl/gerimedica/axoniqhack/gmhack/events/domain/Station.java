@@ -10,5 +10,5 @@ public class Station {
 
 	private String name;
 
-	GeoLocation geoLocation;
+	private GeoLocation geoLocation;
 }
