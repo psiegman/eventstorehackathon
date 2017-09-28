@@ -5,6 +5,7 @@ import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
 import java.time.LocalDateTime;
 
 import lombok.extern.slf4j.Slf4j;
+import nl.gerimedica.axoniqhack.gmhack.GeoLocationService;
 import nl.gerimedica.axoniqhack.gmhack.events.IncidentReportedEvent;
 import nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation;
 import nl.gerimedica.axoniqhack.gmhack.events.domain.Severity;
@@ -34,7 +35,7 @@ public class IncidentAggregate {
     @CommandHandler
     public void on(ReportIncidentCommand command) {
         log.info("received command {}", command);
-        apply(IncidentReportedEvent.builder().id(command.getUuid()).severity(command.getSeverity()).comment(command.getComment()).geoLocation(command.getGeoLocation()).phoneNumber(command.getPhoneNumber()).build());
+        apply(IncidentReportedEvent.builder().id(command.getUuid()).severity(command.getSeverity()).comment(command.getComment()).geoLocation(GeoLocationService.convert(command.getGeoLocation())).phoneNumber(command.getPhoneNumber()).build());
     }
 
     @EventSourcingHandler

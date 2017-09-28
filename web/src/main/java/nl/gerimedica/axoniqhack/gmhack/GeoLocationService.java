@@ -15,8 +15,11 @@ public class GeoLocationService {
 	public static final double MAX_LONGITUDE = 6.998938;
 	public static final double MIN_LONGITUDE = 3.4063167;
 
-	public GeoLocation convert(nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation geoLocation) {
+	public static GeoLocation convert(nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation geoLocation) {
 		return new GeoLocation(geoLocation.getLatitude(), geoLocation.getLongitude());
+	}
+	public static nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation convert(GeoLocation geoLocation) {
+		return new nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation(geoLocation.getLatitude(), geoLocation.getLongitude());
 	}
 
 	public GeoLocation createRandomGeoLocation() {
