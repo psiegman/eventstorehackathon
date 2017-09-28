@@ -46,7 +46,7 @@
     <orderEntry type="library" name="Maven: org.axonframework:axon-core:3.0.6" level="project" />
     <orderEntry type="library" name="Maven: com.thoughtworks.xstream:xstream:1.4.9" level="project" />
     <orderEntry type="library" name="Maven: xpp3:xpp3:1.1.4c" level="project" />
-    <orderEntry type="library" name="Maven: 0.0.1-SNAPSHOT:api:unknown" level="project" />
+    <orderEntry type="module" module-name="api" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-actuator:2.0.0.M4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.0.0.M4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.0.0.M4" level="project" />
