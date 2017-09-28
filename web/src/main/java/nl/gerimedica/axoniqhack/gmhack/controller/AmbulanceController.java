@@ -18,9 +18,8 @@ public class AmbulanceController {
 	@Autowired
 	private AmbulanceRepository ambulanceRepository;
 
-	@RequestMapping(value =  {"", "/"})
+	@RequestMapping(value = {"", "/"})
 	public String getAll(Model model) {
-		ambulanceRepository.findAll().forEach(a -> System.out.println(a.getName()));
 		List<Ambulance> ambulances = StreamSupport.stream(ambulanceRepository.findAll().spliterator(), false).collect(Collectors.toList());
 		model.addAttribute("ambulance", ambulances);
 		return "ambulance/index";
