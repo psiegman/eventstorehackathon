@@ -6,12 +6,14 @@ import javafx.geometry.Pos;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import nl.gerimedica.axoniqhack.gmhack.events.IncidentReportedEvent;
+import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 @Component
+@ProcessingGroup("MyHandlers")
 public class Pager extends Label {
 
     public Pager() {

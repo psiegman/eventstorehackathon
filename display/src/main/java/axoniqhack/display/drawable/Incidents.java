@@ -5,6 +5,7 @@ import axoniqhack.display.entities.Location;
 import javafx.scene.canvas.GraphicsContext;
 import nl.gerimedica.axoniqhack.gmhack.events.IncidentReportedEvent;
 import nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation;
+import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Listens to events and updates the display
  */
 @Component
+@ProcessingGroup("MyHandlers")
 public class Incidents implements Drawable {
 
     private final Map<String, Incident> incidents = new ConcurrentHashMap<>();
