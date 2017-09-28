@@ -1,11 +1,15 @@
 package nl.gerimedica.axoniqhack.gmhack.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ambulance")
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Ambulance {
 

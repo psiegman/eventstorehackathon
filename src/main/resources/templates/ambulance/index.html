@@ -14,9 +14,20 @@
 <h1>Hello, world!</h1>
 
 <h2>Ambulances</h2>
-<ul>
-    <li th:each="ambulance: ${ambulance}">${ambulance.name}</li>
-</ul>
+<table class="table table-condensied table-striped">
+    <thead>
+    <tr>
+        <th>Ambulance</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+    </tr>
+    </thead>
+    <tr th:each="ambulance: ${ambulance}">
+        <td th:text="${ambulance.name}"></td>
+        <td th:text="${ambulance.geoLocation.latitude}"></td>
+        <td th:text="${ambulance.geoLocation.longitude}"></td>
+    </tr>
+</table>
 <script th:src="@{/webjars/axios/axios.min.js}"></script>
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

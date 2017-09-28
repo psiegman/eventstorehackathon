@@ -18,7 +18,7 @@ public class StationController {
 	@Autowired
 	private StationRepository stationRepository;
 
-	@RequestMapping("/")
+	@RequestMapping(value = {"", "/"})
 	public String getAllStations(Model model) {
 		List<Station> stations = StreamSupport.stream(stationRepository.findAll().spliterator(), false).collect(Collectors.toList());
 		model.addAttribute("station", stations);

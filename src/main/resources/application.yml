@@ -8,14 +8,15 @@ spring:
 spring:
   application:
     name: GmhHack
-
-#  h2:
-#    console:
-#      enabled: true
+  jpa:
+    generate-ddl: true
+#h2:
+#  console:
+#    enabled: true
 #
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
+#jpa:
+#  hibernate:
+#    ddl-auto: update
 
 #  datasource:
 #    url: jdbc:h2:~/bankdb
