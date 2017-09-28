@@ -33,12 +33,14 @@ import org.axonframework.eventsourcing.SnapshotTriggerDefinition;
 import org.axonframework.eventsourcing.Snapshotter;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.messaging.annotation.ParameterResolverFactory;
+
 import org.axonframework.serialization.Serializer;
 import org.axonframework.serialization.json.JacksonSerializer;
 import org.axonframework.spring.eventsourcing.SpringAggregateSnapshotter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 /**
  * @author Zoltan Altfatter
@@ -83,6 +85,7 @@ public class AxoniqConfiguration {
     }
 
     @Bean
+    @Primary
     public Serializer serializer() {
         return new JacksonSerializer();
     }

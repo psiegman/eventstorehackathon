@@ -1,5 +1,41 @@
 server:
   port: 8089
+
 spring:
   jpa:
     generate-ddl: true
+
+spring:
+  application:
+    name: GmhHack
+
+#  h2:
+#    console:
+#      enabled: true
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+
+#  datasource:
+#    url: jdbc:h2:~/bankdb
+#    url: jdbc:mysql://localhost:3306/axonquery
+#    username: axon
+#    password: axon
+
+axoniq:
+  eventstore:
+    servers: localhost:8123,
+#    localhost:8124, eventstore.axoniq.io:8123
+    token:  4e173955-f887-465a-a7d8-2fdbca7e4e37
+    connectionRetryCount: 10
+    flowControl:
+      initialNrOfPermits: 10000
+      nrOfNewPermits: 10000
+      newPermitsThreshold: 1000
+
+logging:
+  level:
+    com.axoniq.eventstore: DEBUG
+
+
