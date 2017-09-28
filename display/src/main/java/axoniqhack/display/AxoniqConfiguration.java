@@ -15,7 +15,6 @@
 
 package axoniqhack.display;
 
-import com.example.command.BankAccountAggregate;
 import io.axoniq.eventstore.client.EventStoreConfiguration;
 import io.axoniq.eventstore.client.axon.AxonIQEventStore;
 import org.axonframework.commandhandling.model.Repository;
