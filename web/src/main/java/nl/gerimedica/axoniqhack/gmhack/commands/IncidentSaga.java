@@ -29,13 +29,13 @@ public class IncidentSaga {
     @SagaEventHandler(associationProperty = "id")
     void on(final CallReportedEvent event) {
         List<Incident> bygeoLocationAndLocalDate = incidentRepository.findBygeoLocationAndLocalDate(event.getGeoLocation(), event.getLocalDateTime().toLocalDate());
-
+        Severity severity = Severity.LOW;
         if (bygeoLocationAndLocalDate != null && !bygeoLocationAndLocalDate.isEmpty()) {
-
-            // map to that incident and increase severity
+            severity = resolveSeverity(bygeoLocationAndLocalDate);
+            commandGateway.send(UpdateIncidentCommand.builder().comment(event.getComment()).geoLocation(event.getGeoLocation()).localDateTime(event.getLocalDateTime()).phoneNumber(event.getPhoneNumber()).severity(severity).build());
         } else {
             commandGateway.send(ReportIncidentCommand.builder().comment(event.getComment()).geoLocation(event.getGeoLocation()).localDateTime(event.getLocalDateTime())
-                    .phoneNumber(event.getPhoneNumber()).severity(Severity.LOW).build());
+                    .phoneNumber(event.getPhoneNumber()).severity(severity).build());
         }
     }
 
@@ -43,5 +43,17 @@ public class IncidentSaga {
     @SagaEventHandler(associationProperty = "id")
     void on(IncidentResolvedEvent incidentResolvedEvent) {
         // send a command to put aggragete status on finished
+
+
+    }
+
+    private Severity resolveSeverity(final List<Incident> bygeoLocationAndLocalDate) {
+        final Severity severity;
+        if(bygeoLocationAndLocalDate.size() < 3) {
+            severity = Severity.MEDIUM;
+        } else {
+            severity = Severity.HIGH;
+        }
+        return severity;
     }
 }

@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
 import nl.gerimedica.axoniqhack.gmhack.GeoLocationService;
 import nl.gerimedica.axoniqhack.gmhack.events.IncidentReportedEvent;
+import nl.gerimedica.axoniqhack.gmhack.events.IncreaseSeverityEvent;
 import nl.gerimedica.axoniqhack.gmhack.events.domain.GeoLocation;
 import nl.gerimedica.axoniqhack.gmhack.events.domain.Severity;
 import org.axonframework.commandhandling.CommandHandler;
@@ -38,6 +39,12 @@ public class IncidentAggregate {
         apply(IncidentReportedEvent.builder().id(command.getUuid()).severity(command.getSeverity()).comment(command.getComment()).geoLocation(command.getGeoLocation()).phoneNumber(command.getPhoneNumber()).build());
     }
 
+    @CommandHandler
+    public void on(UpdateIncidentCommand command) {
+        log.info("received command {}", command);
+        apply(IncreaseSeverityEvent.builder().uuid(command.getUuid()).severity(command.getSeverity()).build());
+    }
+
     @EventSourcingHandler
     public void on(IncidentReportedEvent event) {
         log.info("event sourcing handler handling event {}", event);
@@ -46,6 +53,11 @@ public class IncidentAggregate {
         this.geoLocation = event.getGeoLocation();
         this.localDateTime = event.getLocalDateTime();
         this.phoneNumber = event.getPhoneNumber();
+        this.severity = event.getSeverity();
+    }
+
+    @EventSourcingHandler
+    public void on(IncreaseSeverityEvent event){
         this.severity = event.getSeverity();
     }
 }
