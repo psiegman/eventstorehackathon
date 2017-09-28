@@ -28,14 +28,14 @@ public class IncidentSaga {
     @StartSaga
     @SagaEventHandler(associationProperty = "id")
     void on(final CallReportedEvent event) {
-        List<Incident> bygeoLocationAndLocalDate =
-                incidentRepository.findBygeoLocationAndLocalDate(event.getGeoLocation(), event.getLocalDateTime().toLocalDate());
+        List<Incident> bygeoLocationAndLocalDate = incidentRepository.findBygeoLocationAndLocalDate(event.getGeoLocation(), event.getLocalDateTime().toLocalDate());
 
-        if(bygeoLocationAndLocalDate != null && bygeoLocationAndLocalDate.size() > 0) {
+        if (bygeoLocationAndLocalDate != null && !bygeoLocationAndLocalDate.isEmpty()) {
+
             // map to that incident and increase severity
         } else {
-            commandGateway.send(ReportIncidentCommand.builder().comment(event.getComment()).geoLocation(event.getGeoLocation()).localDateTime(event.getLocalDateTime()).phoneNumber(event.getPhoneNumber()).severity(
-                    Severity.LOW).build());
+            commandGateway.send(ReportIncidentCommand.builder().comment(event.getComment()).geoLocation(event.getGeoLocation()).localDateTime(event.getLocalDateTime())
+                    .phoneNumber(event.getPhoneNumber()).severity(Severity.LOW).build());
         }
     }
 
