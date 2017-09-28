@@ -9,11 +9,11 @@ import java.util.Random;
 public class GeoLocationService {
 
 	private static final Random random = new Random();
-	private static final double MAX_LATITUDE = 53.347849;
-	private static final double MIN_LATITUDE = 51.2689837;
+	public static final double MAX_LATITUDE = 53.347849;
+	public static final double MIN_LATITUDE = 51.2689837;
 
-	private static final double MAX_LONGITUDE = 6.998938;
-	private static final double MIN_LONGITUDE = 3.4063167;
+	public static final double MAX_LONGITUDE = 6.998938;
+	public static final double MIN_LONGITUDE = 3.4063167;
 
 	public GeoLocation createRandomGeoLocation() {
 

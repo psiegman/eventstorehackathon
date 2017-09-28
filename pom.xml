@@ -6,7 +6,11 @@
 	<groupId>nl.gerimedica.axoniqhack</groupId>
 	<artifactId>gmhack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>display</module>
+		<module>api</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>gmhack</name>
 	<description>AxonIQ Hackathon Gerimedica</description>
@@ -174,16 +178,21 @@
 			<artifactId>spring-restdocs-mockmvc</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>${parent.version}</groupId>
+			<artifactId>api</artifactId>
+		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+	<!--<build>-->
+		<!--<plugins>-->
+			<!--<plugin>-->
+				<!--<groupId>org.springframework.boot</groupId>-->
+				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+			<!--</plugin>-->
+		<!--</plugins>-->
+	<!--</build>-->
 
 	<repositories>
 		<repository>
