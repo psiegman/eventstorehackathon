@@ -16,7 +16,7 @@ public class IncidentSaga {
     private transient CommandGateway commandGateway;
 
     @StartSaga
-    @SagaEventHandler(associationProperty = "scenarioId")
+    @SagaEventHandler(associationProperty = "id")
     void on(final CallReportedEvent callReportedEvent) {
 
     }
